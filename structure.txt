@@ -1,0 +1,18 @@
+enterprise-rag/
+│
+├── app/
+│   ├── config/
+│   ├── ingestion/
+│   ├── models/
+│   └── retrieval/
+│
+├── data/
+│   └── documents/
+│
+├── scripts/
+│
+├── tests/
+│
+├── .env
+├── requirements.txt
+└── docker-compose.yml
