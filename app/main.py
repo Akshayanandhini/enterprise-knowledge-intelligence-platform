@@ -9,7 +9,9 @@ app = FastAPI(
     version="1.0.0",
 )
 
-
+@app.get("/")
+async def root():
+    return {"status": "ok"}
 
 @app.post("/query",response_model = QueryResponse)
 async def query(request:QueryRequest):
