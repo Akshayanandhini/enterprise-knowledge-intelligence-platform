@@ -11,15 +11,14 @@ A production-oriented **Agentic Retrieval-Augmented Generation (RAG)** system bu
 📚 **API Documentation:** https://enterprise-knowledge-intelligence.onrender.com/docs
 
 ---
-# 📸 Demo
+
+## 📸 Demo
 
 ### Home Page
 
 The application provides a clean Streamlit interface where users can securely enter their own Groq API key and query the enterprise knowledge base.
 
 ![Home Page](image/p1.png)
-
----
 
 ### Agentic Workflow
 
@@ -31,8 +30,6 @@ Every request follows a transparent Agentic RAG pipeline. The interface shows ea
 - ✍️ Answer Generation
 
 ![Workflow](image/p2.png)
-
----
 
 ### Grounded Answers with Citations
 
@@ -59,7 +56,7 @@ This project provides an **AI-powered Enterprise Knowledge Platform** capable of
 
 ---
 
-# ✨ Features
+## ✨ Features
 
 - 🤖 Planner Agent
 - 🔍 Hybrid Retrieval (Dense + Sparse)
@@ -78,9 +75,9 @@ This project provides an **AI-powered Enterprise Knowledge Platform** capable of
 
 ---
 
-# 🏗️ Architecture
+## 🏗️ Architecture
 
-## System Architecture
+### System Architecture
 
 ```
                     User
@@ -108,7 +105,8 @@ This project provides an **AI-powered Enterprise Knowledge Platform** capable of
                       ▼
          Grounded Response + Citations
 ```
-## Deployment Architecture
+
+### Deployment Architecture
 
 ```
                 Streamlit Cloud
@@ -124,10 +122,11 @@ This project provides an **AI-powered Enterprise Knowledge Platform** capable of
                        │
                        ▼
                  Qdrant Cloud
+```
 
 ---
 
-# 🧠 Workflow
+## 🧠 Workflow
 
 ### 1. Planner Agent
 
@@ -139,8 +138,6 @@ The planner analyzes the user's question and determines:
 - Metadata filters
 - Retrieval strategy
 - Top-K retrieval size
-
----
 
 ### 2. Hybrid Retriever
 
@@ -155,15 +152,11 @@ The results are merged using:
 
 This provides significantly better retrieval quality than using either search technique individually.
 
----
-
 ### 3. Reflection Agent
 
 Before generating a response, the Reflection Agent evaluates whether the retrieved evidence is sufficient.
 
 If the retrieved context is insufficient, the workflow performs another retrieval attempt.
-
----
 
 ### 4. Answer Agent
 
@@ -173,9 +166,9 @@ Every answer includes citations to improve transparency and reduce hallucination
 
 ---
 
-# ⚙️ Tech Stack
+## ⚙️ Tech Stack
 
-## Backend
+### Backend
 
 - Python
 - FastAPI
@@ -183,31 +176,31 @@ Every answer includes citations to improve transparency and reduce hallucination
 - LangChain
 - Pydantic
 
-## AI
+### AI
 
 - Groq API
 - Llama Models
 - Agentic RAG
 
-## Retrieval
+### Retrieval
 
 - Qdrant Cloud
 - Dense Embeddings
 - BM25 Sparse Search
 - Reciprocal Rank Fusion
 
-## Frontend
+### Frontend
 
 - Streamlit
 
-## Observability
+### Observability
 
 - LangSmith
 - Logging
 
 ---
 
-# 📂 Project Structure
+## 📂 Project Structure
 
 ```
 enterprise_rag/
@@ -231,7 +224,7 @@ enterprise_rag/
 
 ---
 
-# 📄 Knowledge Base
+## 📄 Knowledge Base
 
 The demo knowledge base contains enterprise documents such as:
 
@@ -246,7 +239,7 @@ These documents are chunked, embedded, and indexed into Qdrant Cloud.
 
 ---
 
-# 🔍 Hybrid Search
+## 🔍 Hybrid Search
 
 Instead of relying solely on semantic search, the platform combines:
 
@@ -267,7 +260,8 @@ Instead of relying solely on semantic search, the platform combines:
 This significantly improves retrieval quality for both semantic and keyword-heavy queries.
 
 ---
-# 🎯 Key Design Decisions
+
+## 🎯 Key Design Decisions
 
 ### Why LangGraph?
 
@@ -284,9 +278,10 @@ The Reflection Agent validates whether the retrieved evidence is sufficient befo
 ### Why User-Provided API Keys?
 
 Instead of embedding an LLM API key in the backend, the application accepts a user-provided Groq API key. This keeps deployment lightweight while allowing users to experiment with the application using their own credentials.
+
 ---
 
-# 📊 LangSmith
+## 📊 LangSmith
 
 The project integrates LangSmith for:
 
@@ -298,7 +293,7 @@ The project integrates LangSmith for:
 
 ---
 
-# 📝 API Example
+## 📝 API Example
 
 ### Request
 
@@ -323,7 +318,8 @@ POST /query
 ```
 
 ---
-# 🧪 Try It Yourself
+
+## 🧪 Try It Yourself
 
 Using the live demo is simple:
 
@@ -336,27 +332,27 @@ Using the live demo is simple:
 
 ---
 
-# ▶️ Running the Project
+## ▶️ Running the Project
 
-## Clone
+### Clone
 
 ```bash
 git clone <repository_url>
 ```
 
-## Install
+### Install
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Run FastAPI
+### Run FastAPI
 
 ```bash
 uvicorn app.main:app --reload
 ```
 
-## Run Streamlit
+### Run Streamlit
 
 ```bash
 streamlit run streamlit_app.py
@@ -364,7 +360,7 @@ streamlit run streamlit_app.py
 
 ---
 
-# 📈 Current Capabilities
+## 📈 Current Capabilities
 
 - ✅ Agentic Workflow
 - ✅ Hybrid Retrieval
@@ -378,7 +374,7 @@ streamlit run streamlit_app.py
 
 ---
 
-# 🔮 Future Enhancements (Version 2)
+## 🔮 Future Enhancements (Version 2)
 
 The following improvements are planned for future iterations:
 
@@ -426,7 +422,7 @@ The following improvements are planned for future iterations:
 
 ---
 
-# 🎯 Project Goals
+## 🎯 Project Goals
 
 This project was built to demonstrate practical AI Engineering skills, including:
 
@@ -440,7 +436,7 @@ This project was built to demonstrate practical AI Engineering skills, including
 
 ---
 
-# 🙌 Acknowledgements
+## 🙌 Acknowledgements
 
 Built using:
 
