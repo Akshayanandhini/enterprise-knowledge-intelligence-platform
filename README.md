@@ -2,6 +2,44 @@
 
 A production-oriented **Agentic Retrieval-Augmented Generation (RAG)** system built using **LangGraph**, **FastAPI**, and **Qdrant Cloud**. Unlike traditional chatbot-style RAG applications, this project focuses on **intelligent retrieval, reasoning, and grounded answering** using multiple AI agents.
 
+## 🚀 Live Demo
+
+🌐 **Frontend:** https://enterprise-knowledge-intelligence-platform-kmtfucp7hpnbsecr5hj.streamlit.app/
+
+⚡ **Backend API:** https://enterprise-knowledge-intelligence.onrender.com
+
+📚 **API Documentation:** https://enterprise-knowledge-intelligence.onrender.com/docs
+
+---
+# 📸 Demo
+
+### Home Page
+
+The application provides a clean Streamlit interface where users can securely enter their own Groq API key and query the enterprise knowledge base.
+
+![Home Page](image/p1.png)
+
+---
+
+### Agentic Workflow
+
+Every request follows a transparent Agentic RAG pipeline. The interface shows each stage of execution in real time.
+
+- 🧠 Planner Agent
+- 🔍 Hybrid Retrieval
+- 🤔 Reflection Agent
+- ✍️ Answer Generation
+
+![Workflow](image/p2.png)
+
+---
+
+### Grounded Answers with Citations
+
+Responses are generated exclusively from retrieved enterprise documents and include citations for transparency and traceability.
+
+![Answer](image/p3.png)
+
 ---
 
 ## 🚀 Overview
@@ -42,6 +80,8 @@ This project provides an **AI-powered Enterprise Knowledge Platform** capable of
 
 # 🏗️ Architecture
 
+## System Architecture
+
 ```
                     User
                       │
@@ -68,6 +108,22 @@ This project provides an **AI-powered Enterprise Knowledge Platform** capable of
                       ▼
          Grounded Response + Citations
 ```
+## Deployment Architecture
+
+```
+                Streamlit Cloud
+                       │
+                       ▼
+                FastAPI (Render)
+                       │
+                       ▼
+             LangGraph Workflow
+        ┌──────────┬──────────┬──────────┐
+        ▼          ▼          ▼
+    Planner   Hybrid Search Reflection
+                       │
+                       ▼
+                 Qdrant Cloud
 
 ---
 
@@ -169,7 +225,6 @@ enterprise_rag/
 │
 ├── documents/
 ├── streamlit_app.py
-├── docker-compose.yaml
 ├── requirements.txt
 └── README.md
 ```
@@ -212,6 +267,24 @@ Instead of relying solely on semantic search, the platform combines:
 This significantly improves retrieval quality for both semantic and keyword-heavy queries.
 
 ---
+# 🎯 Key Design Decisions
+
+### Why LangGraph?
+
+LangGraph provides explicit workflow orchestration, making the multi-agent pipeline easier to understand, debug, and extend.
+
+### Why Hybrid Retrieval?
+
+Dense retrieval captures semantic similarity, while BM25 improves keyword matching. Combining both using Reciprocal Rank Fusion (RRF) improves retrieval quality across different query types.
+
+### Why Reflection?
+
+The Reflection Agent validates whether the retrieved evidence is sufficient before answer generation, reducing the likelihood of responses based on weak or irrelevant context.
+
+### Why User-Provided API Keys?
+
+Instead of embedding an LLM API key in the backend, the application accepts a user-provided Groq API key. This keeps deployment lightweight while allowing users to experiment with the application using their own credentials.
+---
 
 # 📊 LangSmith
 
@@ -248,6 +321,18 @@ POST /query
     ]
 }
 ```
+
+---
+# 🧪 Try It Yourself
+
+Using the live demo is simple:
+
+1. Open the Streamlit application.
+2. Enter your own Groq API key.
+3. Ask a question about the enterprise knowledge base.
+4. Review the grounded answer and supporting citations.
+
+> **Note:** The application does not store or persist your API key. It is used only to process your request.
 
 ---
 
